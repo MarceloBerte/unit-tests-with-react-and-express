@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+dl {
+    padding: 1rem;
+}
+dl dd {
+    padding: .5rem 0;
+}
+
+dl dd ul li:before {
+    content: '- '
+}
+
+.striped-list li:nth-of-type(odd) { 
+    background-color: beige;
+}
+
+.modal {
+    width: clamp(100px, 80%, 500px);
+    padding: .5rem;
+    background-color: aliceblue;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.modal header,
+.modal footer {
+    display: flex;
+    align-items: center;
+}
+
+.modal header {
+    justify-content: space-between;
+}
+
+.modal footer {
+    justify-content: end;
+}
+
+.modal-backdrop {
+    background-color: black;
+    opacity: .75;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
