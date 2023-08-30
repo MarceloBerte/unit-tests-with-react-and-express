@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-import { getFruits } from '../services/fruits';
-
 export const useFruits = () => {
 
     const [fruits, setFruits] = useState([]);
 
-    const getFruitsAndUpdateState = async () => {
-        const fruits = await getFruits();
+    const getFruitsAndUpdateState = async (fn) => {
+        const fruits = await fn;
         setFruits(fruits);
     };
 

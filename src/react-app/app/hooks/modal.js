@@ -4,12 +4,12 @@ export const useModal = () => {
 
     const [modalState, setModalState] = useState({showModal: false, title: '', description: ''});
 
-    const openModalAndFill = (data) => {
+    const openModalAndFill = ({title}) => {
         setModalState(prevState => {
             return {
                 ...prevState, 
                 showModal: true, 
-                title: data.title,
+                title,
                 description: ''
             };
         })

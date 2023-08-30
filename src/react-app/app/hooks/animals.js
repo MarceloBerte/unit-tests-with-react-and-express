@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-import { getAnimals } from '../services/animals';
-
 export const useAnimals = () => {
 
     const [animals, setAnimals] = useState([]);
 
-    const getAnimalsAndUpdateState = async () => {
-        const animals = await getAnimals();
+    const getAnimalsAndUpdateState = async (fn) => {
+        const animals = await fn;
         setAnimals(animals);
     };
 
