@@ -31,4 +31,4 @@ export const useModal = () => {
         openModalAndFill,
         closeModal
     }
-}
+};
