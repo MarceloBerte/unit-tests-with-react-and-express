@@ -4,8 +4,8 @@ export const useAnimals = () => {
 
     const [animals, setAnimals] = useState([]);
 
-    const getAnimalsAndUpdateState = async (fn) => {
-        const animals = await fn;
+    const getAnimalsAndUpdateState = async (getAnimalsFunction) => {
+        const animals = await getAnimalsFunction;
         setAnimals(animals);
     };
 

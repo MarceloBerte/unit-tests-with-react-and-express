@@ -4,8 +4,8 @@ export const useFruits = () => {
 
     const [fruits, setFruits] = useState([]);
 
-    const getFruitsAndUpdateState = async (fn) => {
-        const fruits = await fn;
+    const getFruitsAndUpdateState = async (getFruitsFunction) => {
+        const fruits = await getFruitsFunction;
         setFruits(fruits);
     };
 
