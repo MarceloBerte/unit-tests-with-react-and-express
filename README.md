@@ -15,11 +15,11 @@ Project created to study unit tests in a React applications that consumes a Expr
 
 Development mode:
 In another terminal window run:
-- $ `docker exec -it node_test npm run dev`
+- $ `docker exec -it app npm run dev`
 
 Run the tests:
-- $ `docker exec -it node_test npm run test` 
-- $ `docker exec -it node_test npm run testWatch`
+- $ `docker exec -it app npm run test` 
+- $ `docker exec -it app npm run testWatch`
 
 ## Connect to database
 - $ `docker exec -it db psql -d db -h db -U root`

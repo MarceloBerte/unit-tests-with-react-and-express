@@ -1,23 +1,22 @@
-const animalsList = [
-    { name: 'Cat' },
-    { name: 'Dog' },
-    { name: 'Bird' }
-];
+const Animals = require('../models/animals');
 
 const AnimalsController = {
-    get: (req, res) => {
+    get: async (req, res) => {
 
-        const {name} = req.params;
+        const { name } = req.params;
 
-        if(name) {
-            const filteredAnimal = animalsList.filter(animal => animal.name.toLocaleLowerCase() === name);
+        if (name) {
+            const capitalizedNameString = `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+            const filteredAnimal = await Animals.findOne({ where: { name: capitalizedNameString } })
 
-            if(!filteredAnimal.length) {
+            if (!filteredAnimal) {
                 return res.status(404).send('Animal not found');
             }
 
             return res.json(filteredAnimal);
         }
+
+        const animalsList = await Animals.findAll();
 
         return res.json(animalsList);
     }

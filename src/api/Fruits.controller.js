@@ -1,23 +1,22 @@
-const fruitsList = [
-    { name: 'Apple' },
-    { name: 'Banana' },
-    { name: 'Strawberry' }
-];
+const Fruits = require('../models/fruits');
 
 const FruitsController = {
-    get: (req, res) => {
+    get: async (req, res) => {
 
-        const {name} = req.params;
+        const { name } = req.params;
 
-        if(name) {
-            const filteredFruit = fruitsList.filter(fruit => fruit.name.toLocaleLowerCase() === name);
+        if (name) {
+            const capitalizedNameString = `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+            const filteredFruit = await Fruits.findOne({ where: { name: capitalizedNameString } })
 
-            if(!filteredFruit.length) {
+            if (!filteredFruit) {
                 return res.status(404).send('Fruit not found');
             }
 
             return res.json(filteredFruit);
         }
+
+        const fruitsList = await Fruits.findAll();
 
         return res.json(fruitsList);
     }
