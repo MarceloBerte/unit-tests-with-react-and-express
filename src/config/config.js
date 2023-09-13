@@ -1,32 +1,17 @@
-const getEnv = (name) => {
-    const value = process.env[name];
-    if (!value) {
-        throw new Error(`${name} not defined in environment`);
-    }
-    return value;
+const connection = {
+    'username': process.env.POSTGRES_USER,
+    'password': process.env.POSTGRES_PASSWORD,
+    'database': process.env.POSTGRES_DB,
+    'host': process.env.POSTGRES_HOST,
+    'dialect': 'postgres'
 };
 
 const config = {
-    'production': {
-        'username': getEnv('POSTGRES_USER'),
-        'password': getEnv('POSTGRES_PASSWORD'),
-        'database': getEnv('POSTGRES_DB'),
-        'host': getEnv('POSTGRES_HOST'),
-        'dialect': 'postgres',
-    },
-    'development': {
-        'username': getEnv('POSTGRES_USER'),
-        'password': getEnv('POSTGRES_PASSWORD'),
-        'database': getEnv('POSTGRES_DB'),
-        'host': getEnv('POSTGRES_HOST'),
-        'dialect': 'postgres',
-    },
+    'production': connection,
+    'development': connection,
     'test': {
-        'username': getEnv('POSTGRES_USER'),
-        'password': getEnv('POSTGRES_PASSWORD'),
-        'database': getEnv('POSTGRES_TEST_DB'),
-        'host': getEnv('POSTGRES_HOST'),
-        'dialect': 'postgres',
+        ...connection,
+        'database': process.env.POSTGRES_TEST_DB
     }
 };
 

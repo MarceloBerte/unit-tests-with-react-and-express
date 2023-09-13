@@ -22,10 +22,12 @@ Run the tests:
 - $ `docker exec -it node_test npm run testWatch`
 
 ## Connect to database
-- $ `docker exec -it db psql -d node_test_db -h db -U root`
+- $ `docker exec -it db psql -d db -h db -U root`
 
 ### Migrations
-- $ `docker exec -it node_test npx sequelize-cli db:migrate`
+- $ `docker exec -it app npx sequelize-cli migration:generate --name <migration name>`
+- $ `docker exec -it app npx sequelize-cli db:migrate`
 
 ### Seeds
-- $ `docker exec -it node_test npx sequelize-cli db:seed:all`
+- $ `docker exec -it app npx sequelize-cli seed:generate --name <seed-name>`
+- $ `docker exec -it app npx sequelize-cli db:seed:all`

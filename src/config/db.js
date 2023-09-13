@@ -1,17 +1,15 @@
 const Sequelize = require('sequelize');
 
-const HOST = process.env.POSTGRES_HOST;
-const USER = process.env.POSTGRES_USER;
-const PASSWORD = process.env.POSTGRES_PASSWORD;
-const DATABASE = process.env.POSTGRES_DB;
-const DIALECT = 'postgres';
+const config = require('./config');
 
-const sequelize = new Sequelize(DATABASE, USER, PASSWORD, {
-    host: HOST,
-    dialect: DIALECT,
+const { database, username, password, host, dialect } = config[process.env.NODE_ENV];
+
+const db = new Sequelize(database, username, password, {
+    host,
+    dialect,
     define: {
         freezeTableName: true
     }
 });
 
-module.exports = sequelize;
+module.exports = db;
