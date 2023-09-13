@@ -9,4 +9,12 @@ services:
       - '8080:8080'
     volumes:
       - .:/app
-      
+    env_file:
+      - .env
+  db:
+    container_name: db
+    image: 'postgres:14'
+    volumes:
+      - data:/var/lib/postgresql/data
+volumes:
+  data:

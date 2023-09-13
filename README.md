@@ -20,3 +20,12 @@ In another terminal window run:
 Run the tests:
 - $ `docker exec -it node_test npm run test` 
 - $ `docker exec -it node_test npm run testWatch`
+
+## Connect to database
+- $ `docker exec -it db psql -d node_test_db -h db -U root`
+
+### Migrations
+- $ `docker exec -it node_test npx sequelize-cli db:migrate`
+
+### Seeds
+- $ `docker exec -it node_test npx sequelize-cli db:seed:all`
