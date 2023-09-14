@@ -1,3 +1,5 @@
+/** @jest-environment jsdom */
+
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
@@ -25,32 +27,32 @@ describe('ListComponent', () => {
 
     describe('DescriptionListTermComponent', () => {
         it('Should return a clean empty markup', () => {
-           return testComponent(<DescriptionListTermComponent />, '<dt></dt>');
+            return testComponent(<DescriptionListTermComponent />, '<dt></dt>');
         });
     });
-    
+
     describe('DescriptionListDetailComponent', () => {
         it('Should return a clean empty markup', () => {
-           return testComponent(<DescriptionListDetailComponent />, '<dd></dd>');
+            return testComponent(<DescriptionListDetailComponent />, '<dd></dd>');
         });
     });
-    
+
     describe('UnorderedListComponent', () => {
         it('Should return a clean empty markup', () => {
-           return testComponent(<UnorderedListComponent />, '<ul></ul>');
+            return testComponent(<UnorderedListComponent />, '<ul></ul>');
         });
     });
-    
+
     describe('ListItemComponent', () => {
         it('Should return a clean empty markup', () => {
-           return testComponent(<ListItemComponent />, '<li></li>');
+            return testComponent(<ListItemComponent />, '<li></li>');
         });
 
         it('Should trigger onClick event', () => {
             const handleClick = jest.fn();
 
             const { container } = render(<ListItemComponent onClick={handleClick} />);
-            const listItem = container.firstChild; 
+            const listItem = container.firstChild;
 
             fireEvent.click(listItem);
 

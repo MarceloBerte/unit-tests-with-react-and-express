@@ -7,9 +7,9 @@ describe.each([
     { query: 'dog', expected: 200 },
     { query: 'bird', expected: 200 },
     { query: 'horse', expected: 404 }
-])('Animals', ({query, expected}) => {
+])('Animals', ({ query, expected }) => {
     it(`Should return ${expected} searching for "${query}"`, async () => {
         const response = await Request(App).get(`/api/animals/${query}`);
-        expect(response.statusCode).toBe(expected);   
+        expect(response.statusCode).toBe(expected);
     });
 });

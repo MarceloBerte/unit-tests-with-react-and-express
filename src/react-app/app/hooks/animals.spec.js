@@ -1,3 +1,5 @@
+/** @jest-environment jsdom */
+
 import { renderHook, act } from '@testing-library/react';
 
 import { useAnimals } from './animals';
@@ -12,7 +14,7 @@ const getAnimals = jest.fn(() => {
 
 describe('Custom Hooks', () => {
     describe('animals.js | useAnimals', () => {
-          
+
         it('Should call getAnimalsAndUpdateState function and update animals state', async () => {
             const { result } = renderHook(useAnimals);
 

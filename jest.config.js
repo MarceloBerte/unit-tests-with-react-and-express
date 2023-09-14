@@ -2,9 +2,9 @@
 
 const config = {
     verbose: true,
-    testEnvironment: "jsdom",
+    testEnvironment: "node",
     coveragePathIgnorePatterns: [
-      "/node_modules/"
+        "/node_modules/"
     ]
 };
 
