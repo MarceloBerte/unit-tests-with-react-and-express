@@ -6,8 +6,10 @@
   "scripts": {
     "start": "nodemon -L index.js",
     "dev": "webpack --watch --mode development",
-    "test": "jest --collect-coverage",
-    "testWatch": "jest --watchAll",
+    "pretest": "NODE_ENV=test sequelize-cli db:drop && NODE_ENV=test sequelize-cli db:create && NODE_ENV=test sequelize-cli db:migrate && NODE_ENV=test sequelize-cli db:seed:all",
+    "test": "NODE_ENV=test jest --collect-coverage",
+    "posttest": "NODE_ENV=test sequelize-cli db:drop",
+    "testWatch": "NODE_ENV=test jest --watchAll",
     "build": "webpack --mode production"
   },
   "keywords": [],
