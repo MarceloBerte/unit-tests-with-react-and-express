@@ -13,3 +13,13 @@ describe.each([
         expect(response.statusCode).toBe(expected);
     });
 });
+
+describe.each([
+    { message: 'Should be possible to insert a new Animal into database', payload: { name: 'Chicken' }, expected: 201 },
+    { message: 'Should not be possible to insert a new Animal if it already exists in database', payload: { name: 'Cat' }, expected: 409 }
+])('Animals', ({ message, payload, expected }) => {
+    it(message, async () => {
+        const response = await Request(App).post('/api/animals').send(payload);
+        expect(response.statusCode).toBe(expected);
+    });
+});
