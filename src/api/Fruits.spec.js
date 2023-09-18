@@ -23,3 +23,13 @@ describe.each([
         expect(response.statusCode).toBe(expected);
     });
 });
+
+describe.each([
+    { message: 'Should be possible to delete a Fruit from database', query: 'Banana', expected: 200 },
+    { message: 'Should throw 404 error trying to delete a Fruit that isn\'t in database', query: 'Orange', expected: 404 },
+])('Fruits', ({ message, query, expected }) => {
+    it(message, async () => {
+        const response = await Request(App).delete(`/api/fruits/${query}`);
+        expect(response.statusCode).toBe(expected);
+    });
+});

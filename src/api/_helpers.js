@@ -37,4 +37,24 @@ const createData = async (req, res, model) => {
     return res.status(201).json(newItem);
 };
 
-module.exports = { getData, createData };
+const deleteData = async (req, res, model) => {
+
+    const { name } = req.params;
+
+    if (!name) {
+        return res.status(500).send('Missing parameters');
+    }
+
+    const capitalizedNameString = `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+    const item = await model.findOne({ where: { name: capitalizedNameString } });
+
+    if (!item) {
+        return res.status(404).send('Not found');
+    }
+
+    await item.destroy();
+
+    return res.status(200).json(item);
+}
+
+module.exports = { getData, createData, deleteData };
