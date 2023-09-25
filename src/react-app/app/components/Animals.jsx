@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import ListComponent from './list/index.jsx';
 import ModalComponent from './modal/index.jsx';
 
 import { useModal } from '../hooks/modal.js';
+
+import ROUTES from '../routes-constants.js';
 
 const AnimalsComponent = ({data}) => {
 
@@ -19,7 +23,10 @@ const AnimalsComponent = ({data}) => {
     return (
         <>
             <ListComponent.DescriptionList>
-                <ListComponent.DescriptionListTerm>Animals</ListComponent.DescriptionListTerm>
+                <ListComponent.DescriptionListTerm>
+                    Animals
+                    <Link to={ROUTES.NEW_ANIMAL}>Add animal</Link>
+                </ListComponent.DescriptionListTerm>
                 <ListComponent.DescriptionListDetail>
                     <ListComponent.UnorderedList className="striped-list">
                         {data.map(animal => {
@@ -28,7 +35,7 @@ const AnimalsComponent = ({data}) => {
                     </ListComponent.UnorderedList>
                 </ListComponent.DescriptionListDetail>
             </ListComponent.DescriptionList>
-
+         
             {/* ----- */}
 
             <ModalComponent.Root showModal={modalState.showModal}>

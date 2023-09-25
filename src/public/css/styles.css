@@ -4,19 +4,51 @@
     outline: none;
 }
 
+body {
+    padding: 1rem;
+}
+
 ul, ol {
     list-style: none;
 }
 
 dl {
-    padding: 1rem;
+    padding: 1rem 0;
 }
+
+dl:first-child {
+    padding-top: 0;
+}
+
+dl dt {
+    display: flex;
+    justify-content: space-between;
+}
+
 dl dd {
     padding: .5rem 0;
 }
 
 dl dd ul li:before {
     content: '- '
+}
+
+form fieldset {
+    padding: 1rem;
+}
+
+.form-control {
+    padding: .5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control:first-child {
+    padding-top: 0;
+}
+
+.form-control input {
+    padding: .5rem;
 }
 
 .striped-list li:nth-of-type(odd) { 

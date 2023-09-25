@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import ListComponent from './list/index.jsx';
 import ModalComponent from './modal/index.jsx';
 
 import { useModal } from '../hooks/modal.js';
+
+import ROUTES from '../routes-constants.js';
 
 const FruitsComponent = ({data}) => {
 
@@ -19,7 +23,10 @@ const FruitsComponent = ({data}) => {
     return (
         <>
             <ListComponent.DescriptionList>
-                <ListComponent.DescriptionListTerm>Fruits</ListComponent.DescriptionListTerm>
+                <ListComponent.DescriptionListTerm>
+                    Fruits
+                    <Link to={ROUTES.NEW_FRUIT}>Add fruit</Link>
+                </ListComponent.DescriptionListTerm>
                 <ListComponent.DescriptionListDetail>
                     <ListComponent.UnorderedList className="striped-list">
                         {data.map(fruit => {
